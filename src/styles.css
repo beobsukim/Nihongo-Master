@@ -1,0 +1,38 @@
+/* ===== 전역 스타일 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { width: 100%; height: 100%; overflow: hidden; background: #cfe9f1; }
+
+/* 벽지: 하늘색 점무늬 픽셀 타일 (16x16 SVG를 32px로 확대) */
+body {
+  background-color: #cfe9f1;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20shape-rendering%3D%22crispEdges%22%3E%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%23cfe9f1%22%2F%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%222%22%20height%3D%222%22%20fill%3D%22%23e6f5f9%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%2211%22%20width%3D%222%22%20height%3D%222%22%20fill%3D%22%23e6f5f9%22%2F%3E%3Crect%20x%3D%2211%22%20y%3D%223%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22%23bfdfe9%22%2F%3E%3Crect%20x%3D%223%22%20y%3D%2211%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22%23bfdfe9%22%2F%3E%3C%2Fsvg%3E");
+  background-size: 32px 32px;
+  image-rendering: pixelated;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Hiragino Sans", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  color: #5a3b28;
+}
+
+#root { position: relative; z-index: 1; width: 100%; height: 100%; }
+
+/* 화면 전체 높이 (모바일 주소창 높이 변화를 고려해 dvh 사용) */
+.fullscreen { height: 100vh; height: 100dvh; width: 100%; }
+
+button { font-family: inherit; -webkit-appearance: none; appearance: none; touch-action: manipulation; }
+
+/* 픽셀 버튼을 누를 때 살짝 눌리는 효과 */
+.pixel-button:active:not(:disabled) { transform: translateY(3px); }
+
+/* ===== 애니메이션 ===== */
+/* 오답 시 문제 카드 흔들기 */
+@keyframes shake { 0%,100% { transform: translateX(0) } 20% { transform: translateX(-7px) } 40% { transform: translateX(7px) } 60% { transform: translateX(-5px) } 80% { transform: translateX(5px) } }
+/* 말풍선·패널이 아래에서 올라오며 나타나기 */
+@keyframes slideUp { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
+/* 곰 대기 상태: 위아래로 살랑 */
+@keyframes bearBob { 0% { transform: translateY(0) } 50% { transform: translateY(-3px) } 100% { transform: translateY(0) } }
+/* 곰 정답 상태: 깡충 */
+@keyframes bearHop { 0% { transform: translateY(0) } 50% { transform: translateY(-9px) } 100% { transform: translateY(0) } }
+/* 빈칸 입력 커서 깜빡임 */
+@keyframes cursorBlink { 0% { opacity: 1 } 50% { opacity: 0 } 100% { opacity: 1 } }
